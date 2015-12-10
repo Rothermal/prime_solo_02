@@ -4,7 +4,7 @@
 // added [i] to array inside calculateSTI call. now the for loop functions properly. bug 1 found. note, now it builds array but all the salarys are negative, time to check the math.
 // basepercent was set to minus 1 changed + 1.  now  salarys no longer come up negative. but now everyone is getting a 13 percent bonus. did some testing, found the plus 1 to be unnessesary. removed it. numbers seem to be correct, still one bug left.
 // found if employee has a review of 2, and a 4 digit employee number they still got a 5 percent raise, added argument reviewScore to the getYearAdjustment function. 
-
+// salary was not being rounded off in the new array. adjusted.
 
 var zero = ["zero","1444","20000",2];
 var arrayAtticus = ["Atticus", "2405", "47000", 3];
@@ -51,7 +51,7 @@ function calculateSTI(array){
   
   
   newArray[1] = bonus;
-  newArray[2] = baseSalary * (1.0 + bonus);
+  newArray[2] = Math.round(baseSalary * (1.0 + bonus));
   newArray[3] = Math.round(baseSalary * bonus);
   console.log(newArray[0] + " " + newArray[1] + " " + newArray[2] + " " + newArray[3]);
   return newArray;
